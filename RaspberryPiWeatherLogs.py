@@ -12,7 +12,7 @@ from gpiozero import CPUTemperature
 import datetime
 
 # get date and time
-timeNow=datetime.datetime.now().strftime("%d.%m.%Y %H:%I")
+timeNow=datetime.datetime.now().strftime("%d.%m.%Y %H:%M")
 cpuTemp=round(CPUTemperature().temperature,1) #float with 1 decimal point, deg C 
 
 # get weather from the API openweathermap. It's free, you just have to register
