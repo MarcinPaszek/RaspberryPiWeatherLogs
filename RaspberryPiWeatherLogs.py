@@ -32,7 +32,7 @@ outsideHumidity=jsonWeather["main"]['humidity']
 
 # save/export data with the format of choice. For a start, CSV
 if((os.path.isfile('./'+'WeatherLogs'+'.csv'))==False): #create csv file and write header row
-    listHeader=['Time','CPU temperature, °C', 'Outside temperature, °C', 'Outside humidity, %', 'Outside weather']
+    listHeader=['Time','CPU temperature [°C]', 'Outside temperature [°C]', 'Outside humidity [%]', 'Outside weather']
     with open(('WeatherLogs'+'.csv'), 'w', newline='') as csvfile:
         csvWriter=csv.writer(csvfile)
         csvWriter.writerow(listHeader)
@@ -44,6 +44,6 @@ csvrow.append(cpuTemp)
 csvrow.append(outsideTemperature)
 csvrow.append(outsideHumidity)
 csvrow.append(outsideWeather)
-with open(('WeatherLogs'+'.csv'), 'w', newline='') as csvfile:
+with open(('WeatherLogs'+'.csv'), 'a') as csvfile:
     csvWriter=csv.writer(csvfile)
     csvWriter.writerow(csvrow)
