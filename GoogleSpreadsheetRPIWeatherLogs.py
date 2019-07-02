@@ -6,6 +6,7 @@ import requests
 import bs4
 import re
 import json
+import os
 from gpiozero import CPUTemperature
 import datetime
 
@@ -48,24 +49,3 @@ if('WeatherLogs' not in wlist):
 
 index=len(worksheet.col_values(1))+1
 worksheet.insert_row(row,index)
-
-
-
-
-# save/export data with the format of choice. For a start, CSV
-if((os.path.isfile('./'+'WeatherLogs'+'.csv'))==False): #create csv file and write header row
-    listHeader=['Time','CPU temperature [°C]', 'Outside temperature [°C]', 'Outside humidity [%]', 'Outside weather']
-    with open(('WeatherLogs'+'.csv'), 'w', newline='') as csvfile:
-        csvWriter=csv.writer(csvfile)
-        csvWriter.writerow(listHeader)
-        csvfile.close()
-
-csvrow=[]
-csvrow.append(timeNow)
-csvrow.append('TBD')
-csvrow.append(outsideTemperature)
-csvrow.append(outsideHumidity)
-csvrow.append(outsideWeather)
-with open(('WeatherLogs'+'.csv'), 'a') as csvfile:
-    csvWriter=csv.writer(csvfile)
-    csvWriter.writerow(csvrow)
